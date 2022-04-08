@@ -1,0 +1,23 @@
+{
+  "name": "task2",
+  "version": "1.0.0",
+  "description": "Task 2",
+  "main": "bankSystem.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AliFathy-1999/NTI-Tasks.git"
+  },
+  "author": "Ali Ahmed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AliFathy-1999/NTI-Tasks/issues"
+  },
+  "homepage": "https://github.com/AliFathy-1999/NTI-Tasks#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "yargs": "^17.4.0"
+  }
+}
