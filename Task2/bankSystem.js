@@ -64,10 +64,6 @@ const addData = (data)=>{
                 "transactionType":transactionType,
                 "transactionVal":transactionVal
             })
-            /*transaction = ["transactionType","transactionValue"]
-            transaction.forEach(head=>{
-                if(data[head])dataArr[searchIndex][head] = data[head]
-            })*/
             switch(transactionType){
                 case "add":
                     dataArr[searchIndex].balance += transactionVal;
