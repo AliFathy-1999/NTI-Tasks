@@ -1,7 +1,8 @@
 const addClient = document.querySelector("#addClient")
 const dataWrapper = document.querySelector("#dataWrapper1")
-const clientHeads = ["name", "initialBalance"];
+const dataWrapper1 = document.querySelector("#dataWrapper2")
 const singleData = document.querySelector("#singleData")
+let clientHeads= ["name","initialBalance"]
 const addTransaction = document.querySelector("#addTransactionClient");
 const Ttype= document.querySelector("#type")
 const Tvalue = document.querySelector("#Tvalue")
@@ -17,6 +18,17 @@ const ReadStorage = (storageKey="clients")=>{
 }
 const WriteInStorage = (data=[],storageKey="clients")=>{
     localStorage.setItem(storageKey,JSON.stringify(data));
+}
+const searchClient = (allClients,searchKey,searchValue,searchType="singleIndex")=>{
+    if(searchType == "singleIndex"){
+        return allClients.findIndex(client=> client[searchKey] == searchValue)
+    }else if(searchType == "singleData")
+    {
+        return allClients.find(client=> client[searchKey] == searchValue)
+    }else{
+        return allClients.filter(client=> client[searchKey] == searchValue)
+    }
+
 }
 const createMyOwnElement = (parent, ele,text=null, classes= null, attributes = null)=>{
     const myElement = document.createElement(ele)
@@ -73,54 +85,36 @@ if(dataWrapper){
     drawData(allClients)
 }
 if(addTransaction){
-    function addTransactionFunc(Ttype,Tvalue){
+    function addTransactionFunc(searchKey,searchVal,transactionType,transactionVal){
     addTransaction.addEventListener("submit",function(ele){
         ele.preventDefault();
-        /*const allClients = ReadStorage();
-        let trans;
-        
-        console.log(clientHeadsTrans)
-        //clientHeads.forEach( head => Client[head] = this.elements[head].value);
-
-        allClients.forEach(client=>{
-            client.transactions.push(clientHeadsTrans)
-            console.log(client.transactions)
-            
-        })*/
-        //to get value of transaction value console.log(this.elements[0].value);
-        //Get transaction client.transactions
-        //let transactionObj = {TransactionType : ,transactionsVal:};
-        //clientHeads.forEach( head => Client[head] = this.elements[head].value);
-       /* clientHeadsTrans.forEach( (head) =>{ 
-            allClients[head]
-        
-        })*/
-        //allUsers.push(user)
-        //writeToStorage(allUsers)
-        /*console.log(allClients.forEach(client=>{
-            trans = client.transactions;
-            console.log()
-        }));*/
+        try{
         let allClients = ReadStorage();
-        let ClientTObj = {
-            "TransactioType":Ttype,
-            "TransactionVal":Tvalue
-        }
-        for (const property in ClientTObj) {
-            console.log(`${property}`);
-            //ClientTObj[property] = this.elements[property].value;
-          }
-        /*userHeads.forEach( head => user[head] = this.elements[head].value)*/
-        allClients.find(client=>{
-            let clientTrans = client.transactions;
-            clientTrans.push(ClientTObj)
-            console.log(clientTrans)
+        const searchIndex = searchClient(addClient, searchKey,searchVal);
+
+        if(searchIndex==-1) throw new Error("Client not found ")
+        allClients[searchIndex].transactions.push({
+            "transactionType":transactionType,
+            "transactionVal":transactionVal
         })
-        
-        console.log(allClients)
-      
+        switch(transactionType){
+            case "add":
+                allClients[searchIndex].initialBalance += transactionVal;
+                break;
+            case "withdraw":
+                allClients[searchIndex].initialBalance -= transactionVal;
+                break;
+            default:
+                throw new Error("Invalid Transaction Type");
+        }
+        WriteInFile(allClients)
+        dataWrapper1.innerHTML=addClient
+        console.log('Transaction Added');
+    }catch(err){
+        console.log(err.message);
+    }
     })
 }
 }
 
-addTransactionFunc("add",2000)
+//addTransactionFunc("add",2000)
