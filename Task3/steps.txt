@@ -1,0 +1,15 @@
+step 1: Create Files and Folders
+step 2: install packages
+step 3: Write in env file (port)
+step 4: write in app.js (require express and exports app)
+step 5: write in index.js (require('dotenv').config() and require app from app.js and start running server app.js)
+step 6: write in app.js (import path and hbs modules to make views)
+step 7: Create hbs files in layout (navbar,header,footer) , import Bootstrap in header.hbs 
+step 8: Create allTasks.hbs and add.hbs in views and write in them {{>header}}{{>navbar}} asfba {{>footer}}
+step 9: Write in app.js (makes views hbs, static and path)
+step 10: Create task.routes.js file in routes Folders and write in it (create router from express) 
+step 11: Create file task.controller.js in controller file and  dont write in task.helper.js until adjust routes (import routes in app.js)
+step 12: Create dbConnect.js and write code (connection) and add dbURL, dbName in .env
+step 13:write in dbConnect.js import mongoClient, make function named myConnection and exports it
+step 14: Write in routes get and post add function 
+step 15: write in task.helper (import dbConnection and write function add) and import task.helper in task.controller

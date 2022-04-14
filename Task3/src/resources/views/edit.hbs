@@ -1,0 +1,31 @@
+{{>header}}
+{{>navbar}}
+<!-- TaskNo-Title,content,duedate-status -->
+<section class="container my-4">
+    <div class="row">
+                {{#if ifFound}}
+                     <div class="alert alert-danger">Task not found</div>
+                {{else}}
+        <form method="post">
+            <h3>{{pageTitle}}</h3>
+            <div class="col-6 mb-3">
+                <input class="form-control" placeholder="Task Title" name="title" value="{{tasks.title}}">
+            </div>
+            <div class="col-6 mb-3">
+                <input class="form-control" placeholder="Task Content" name="content" value="{{tasks.content}}">
+            </div>
+            </div>
+            <div class="col-6 mb-3">
+                <input type="date" class="form-control" placeholder="Due Date" name="duedate" value="{{tasks.duedate}}">
+            </div>
+            <div class="col-6 mb-3">
+                <input type="text" class="form-control" placeholder="Task Status" name="status" value="{{tasks.status}}">
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">edit Task</button>
+            </div>
+        </form>
+        {{/if}}
+    </div>
+</section>
+{{>footer}}
