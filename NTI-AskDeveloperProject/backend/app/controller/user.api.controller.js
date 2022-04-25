@@ -1,5 +1,8 @@
 const userModel = require("../../database/models/user.model")
-//const sendEmailMe = require("../helper/sendEmail.helper")
+const multer  = require('multer')
+const path = require("path")
+const fileSystem = require("fs")
+const upload = multer({ dest: 'uploads' })
 class User{
     static helloworld= (req,res)=>{
         res.send("Hello from user api routes");
@@ -79,9 +82,17 @@ class User{
             })
         }
     }
-    static uploadImage = async(req,res)=>{
-
-    }
+    static uploadImage =  async(req, res, next) =>{
+            const imageDir = path.join(__dirname, `../${req.file.path}`);
+            const newPath = `${imageDir}${path.extname(req.file.originalname)}`;
+            fileSystem.rename(imageDir,newPath,()=>{})
+            req.user.pImage=newPath;
+            await req.user.save()
+            res.status(200).send({
+                user:req.user,
+             })
+            }   
+        
 }
 
 module.exports=User;

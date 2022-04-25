@@ -13,9 +13,9 @@ const Schema = mongoose.Schema({
         required:true,
         trim:true
     },
-    dob:{
-        type:Date,
-        max:Date.now(),
+    age:{
+        type:Number,
+        required:true,
     },
     email:{
         type:String,
@@ -56,9 +56,7 @@ const Schema = mongoose.Schema({
     },
     pImage:{
         type:String,
-        default: function () {
-            return `https://secure.gravatar.com/avatar/${this._id}?s=90&d=identicon`;
-          },
+        default:"https://secure.gravatar.com/avatar/${this._id}?s=90&d=identicon"
     },
     titlejob:{
         type:String,

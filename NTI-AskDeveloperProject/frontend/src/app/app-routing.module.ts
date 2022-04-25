@@ -5,19 +5,21 @@ import { TagsComponent } from './pages/tags/tags.component';
 import { UsersComponent } from './pages/users/users.component';
 import { AddquestionComponent } from './user/addquestion/addquestion.component';
 import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 import { UserprofileComponent } from './user/userprofile/userprofile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component:LoginComponent },
   { path: 'home', component:HomeComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
     //******* Test route (add user/api/routename)*******
   { path: 'tags', component:TagsComponent },
   { path: 'users', component:UsersComponent },
   { path: 'addquestion', component:AddquestionComponent },
   {path : 'profile', component:UserprofileComponent},
   {path : 'logout', redirectTo: 'home'},
-  { path: '**', redirectTo: 'home' },
+
 
 ];
 
