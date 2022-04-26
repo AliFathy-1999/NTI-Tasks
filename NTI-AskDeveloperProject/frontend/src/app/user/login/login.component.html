@@ -1,23 +1,37 @@
-<main class="form-signin">
-  <form>
+<main class="form-signin mt-5">
+  <form [formGroup]="data"  (ngSubmit)="handleSubmit()">
     <img class="mb-4 mt-5" src="assets/askDeveloperLogo.png" alt="" width="300" height="100">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+      <input type="email" class="form-control mb-3" id="floatingInput" placeholder="name@example.com" formControlName="email">
       <label for="floatingInput">Email address</label>
-    </div>
+      <div class="alert alert-danger" *ngIf="isSubmitted && LoginData?.['email']?.invalid">
+        <div *ngIf="LoginData?.['email']?.errors?.['required']">
+          Email is required.
+        </div>
+        <div *ngIf="LoginData?.['email']?.errors?.['email']">
+          Email Format is unvalid.
+        </div>
+      </div>
+      </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+      <input type="password" class="form-control mb-3" id="floatingPassword" placeholder="Password" formControlName="password">
       <label for="floatingPassword">Password</label>
+      <div class="alert alert-danger" *ngIf="isSubmitted && LoginData?.['password']?.invalid">
+        <div *ngIf="LoginData?.['password']?.errors?.['required']">
+          password is required.
+        </div>
+        <div *ngIf="LoginData?.['password']?.errors?.['minlength']">
+          min length of Password is 5.
+        </div>
+        <div *ngIf="LoginData?.['password']?.errors?.['maxlength']">
+          max length of Password is 20.
+        </div>
+      </div>
     </div>
 
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <h6>No account! <span routerLink="register" class="text-danger">Sign Up</span></h6>
+    <h6 class="mt-4 text-center ">No account! <span [routerLink]="['register']" class="btn btn-danger ">Sign Up</span></h6>
   </form>
 </main>

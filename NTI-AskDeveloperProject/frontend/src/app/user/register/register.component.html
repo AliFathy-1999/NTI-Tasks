@@ -1,1 +1,123 @@
-<p>register works!</p>
+<main class="form-signin">
+  <form [formGroup]="UserData" (ngSubmit)="handleSubmit()">
+    <img class="mb-4 mt-5" src="assets/askDeveloperLogo.png" alt="" width="230" height="80">
+    <h2 class="h4 mb-3 fw-normal text-center text-primary">Register Form</h2>
+
+    <div class="form-row">
+      <div class="row gy-4 mt-1 mb-4">
+        <div class="col-5">
+          <input type="text" placeholder="First Name" class="form-control" formControlName="fname" name="fname">
+          <div class="alert alert-danger" *ngIf="isSubmitted && RegisterData?.['fname']?.invalid">
+            <div *ngIf="RegisterData?.['fname']?.errors?.['required']">
+              First Name is required.
+            </div>
+            <div *ngIf="RegisterData?.['fname']?.errors?.['minlength']">
+              Min length of First Name is 3 .
+            </div>
+            <div *ngIf="RegisterData?.['fname']?.errors?.['maxlength']">
+              Max length of First Name is 10 .
+            </div>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <input type="text" placeholder="Last Name" class="form-control" formControlName="lname" name="lname">
+          <div class="alert alert-danger" *ngIf="isSubmitted && RegisterData?.['lname']?.invalid ">
+            <div *ngIf="RegisterData?.['lname']?.errors?.['required']">
+              Last Name is required.
+            </div>
+            <div *ngIf="RegisterData?.['lname']?.errors?.['minlength']">
+              Min length of Last Name is 3 .
+            </div>
+            <div *ngIf="RegisterData?.['lname']?.errors?.['maxlength']">
+              Max length of Last Name is 10 .
+            </div>
+
+          </div>
+        </div>
+        <div class="col-3">
+          <input type="number" class="form-control mb-1"  placeholder="Age" formControlName="age" name="age">
+          <div class="alert alert-danger" *ngIf="isSubmitted && RegisterData?.['age']?.invalid">
+            <div *ngIf="RegisterData?.['age']?.errors?.['required']">
+              Age is required.
+            </div>
+            <div *ngIf="RegisterData?.['age']?.errors?.['min']">
+              Min length of Age is 12 .
+            </div>
+            <div *ngIf="RegisterData?.['age']?.errors?.['max']">
+              Max length of Age is 80 .
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="form-group mb-4">
+          <input type="text" class="form-control"  placeholder="Username" formControlName="username" name="username">
+          <div class="alert alert-danger" *ngIf="isSubmitted && RegisterData?.['username']?.invalid ">
+            <div *ngIf="RegisterData?.['username']?.errors?.['required']">
+              Age is required.
+            </div>
+            <div *ngIf="RegisterData?.['username']?.errors?.['minlength']">
+              Min length of username is 10 .
+            </div>
+            <div *ngIf="RegisterData?.['username']?.errors?.['maxlength']">
+              Max length of username is 20 .
+            </div>
+          </div>
+        </div>
+      <div class="form-group mb-4">
+        <input type="email" class="form-control mb-4"  placeholder="Email address" formControlName="email" name="email">
+      <div class="alert alert-danger" *ngIf="isSubmitted && RegisterData?.['email']?.invalid">
+          <div *ngIf="RegisterData?.['email']?.errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="RegisterData?.['email']?.errors?.['email']">
+            Email Formate is unvalid.
+          </div>
+      </div>
+
+      <div class="form-group mb-4">
+        <input type="password" class="form-control"  placeholder="Password" formControlName="password" name="password">
+        <div class="alert alert-danger" *ngIf="isSubmitted && RegisterData?.['password']?.invalid">
+          <div *ngIf="RegisterData?.['password']?.errors?.['required']">
+            password is required.
+          </div>
+          <div *ngIf="RegisterData?.['password']?.errors?.['minlength']">
+            min length of password is 5 .
+          </div>
+          <div *ngIf="RegisterData?.['password']?.errors?.['maxlength']">
+            min length of password is 20 .
+          </div>
+      </div>
+      </div>
+      <div class="form-group mb-4">
+        <input type="text" class="form-control"  placeholder="Phone Number" formControlName="phone" name="phone">
+        <div class="alert alert-danger" *ngIf="isSubmitted && RegisterData?.['phone']?.invalid">
+          <div *ngIf="RegisterData?.['phone']?.errors?.['required']">
+            Phone Number is required.
+          </div>
+          <div *ngIf="RegisterData?.['phone']?.errors?.['minlength']">
+            min length of Phone Number is 11 .
+          </div>
+
+      </div>
+      </div>
+      <div class="form-group mb-4">
+        <input type="text" class="form-control"  placeholder="Job Title" formControlName="titlejob" name="titlejob">
+        <div class="alert alert-danger" *ngIf="isSubmitted && RegisterData?.['titlejob']?.invalid">
+          <div *ngIf="RegisterData?.['titlejob']?.errors?.['required']">
+            Title Job is required.
+          </div>
+          <div *ngIf="RegisterData?.['titlejob']?.errors?.['minlength']">
+            min length of password is 3 .
+          </div>
+          <div *ngIf="RegisterData?.['titlejob']?.errors?.['maxlength']">
+            min length of password is 20 .
+          </div>
+      </div>
+      </div>
+    </div>
+</div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Register Now</button>
+    <h6 class="mt-4 text-center ">Account Created? <span routerLink="/login" class="btn btn-success">Sign in</span></h6>
+  </form>
+</main>

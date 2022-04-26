@@ -13,15 +13,14 @@ body {
 
 .form-signin {
   width: 100%;
-  max-width: 500px;
+  max-width: 450px;
   padding: 15px;
   margin: auto;
-  margin-top: 50px;
-  background-color: #DFEFF4;
+  background-color: #E0EFF4;
   border-radius: 0.5em;
 }
 .form-signin img{
-margin-left: 100px;
+  margin-left: 70px;
 }
 .form-signin .checkbox {
   font-weight: 400;

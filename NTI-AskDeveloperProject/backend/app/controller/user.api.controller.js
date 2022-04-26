@@ -91,7 +91,7 @@ class User{
             res.status(200).send({
                 user:req.user,
              })
-            }   
+    }   
         
 }
 
