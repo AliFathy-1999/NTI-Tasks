@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -15,8 +16,8 @@ import { TagsComponent } from './pages/tags/tags.component';
 import { AddquestionComponent } from './user/addquestion/addquestion.component';
 import { UserprofileComponent } from './user/userprofile/userprofile.component';
 import { RegisterComponent } from './user/register/register.component';
-
 import { LoginComponent } from './user/login/login.component';
+import { UserInterceptor } from './interceptor/user.interceptor';
 
 
 
@@ -44,7 +45,13 @@ import { LoginComponent } from './user/login/login.component';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: UserInterceptor,
+    multi: true,
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

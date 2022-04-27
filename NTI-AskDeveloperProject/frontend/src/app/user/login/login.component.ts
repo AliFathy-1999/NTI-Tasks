@@ -28,16 +28,16 @@ export class LoginComponent implements OnInit {
       this._global.Userlogin(this.data.value).subscribe(res=>{
         console.log(res)
         if(res.error){
-          this.toastr.error("Error in Login")
+          this.toastr.error(res.error)
         }
         else{
           //const token = req.headers.get('Authorization');
           this.toastr.success("Login Successfully")
-          localStorage.setItem('token',res.token)
+          localStorage.setItem('token',res.data.token)
           this.router.navigate(['/home'])
         }
       } , (err)=>{
-        this.toastr.warning("Error in Login")
+        this.toastr.error("Error in Login")
       })
     }
   }

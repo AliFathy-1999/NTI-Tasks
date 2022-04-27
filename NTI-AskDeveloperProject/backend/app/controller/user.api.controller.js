@@ -2,7 +2,6 @@ const userModel = require("../../database/models/user.model")
 const multer  = require('multer')
 const path = require("path")
 const fileSystem = require("fs")
-const upload = multer({ dest: 'uploads' })
 class User{
     static helloworld= (req,res)=>{
         res.send("Hello from user api routes");
@@ -82,16 +81,29 @@ class User{
             })
         }
     }
+    // static uploadImage =  async(req, res) =>{
+    //          const imageDir = path.join(__dirname,`../../../uploads`)
+    //             //path.join(__dirname, `${req.file.path}`);
+    //          const newPath = `${imageDir}${path.extname(req.file.originalname)}`;
+    //         fileSystem.rename(imageDir,newPath,()=>{})
+    //          req.user.pImage=`${req.file.path}${path.extname(req.file.originalname)}`;
+    //          await req.user.save()
+    //         res.status(200).send({
+    //             req
+    //          })
+    // }   
     static uploadImage =  async(req, res, next) =>{
-            const imageDir = path.join(__dirname, `../${req.file.path}`);
-            const newPath = `${imageDir}${path.extname(req.file.originalname)}`;
-            fileSystem.rename(imageDir,newPath,()=>{})
-            req.user.pImage=newPath;
-            await req.user.save()
-            res.status(200).send({
-                user:req.user,
-             })
-    }   
+        const imageDir =  req.file.path;
+        const newPath = `${imageDir}${path.extname(req.file.originalname)}`;
+        fileSystem.rename(imageDir,newPath,()=>{})
+        req.user.pImage=`${imageDir}${path.extname(req.file.originalname)}`;
+        await req.user.save()
+        res.status(200).send({
+            req:newPath,
+            r:imageDir,
+            user:req.user,
+         })
+}   
         
 }
 
