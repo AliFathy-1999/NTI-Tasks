@@ -99,8 +99,6 @@ class User{
         req.user.pImage=`${imageDir}${path.extname(req.file.originalname)}`;
         await req.user.save()
         res.status(200).send({
-            req:newPath,
-            r:imageDir,
             user:req.user,
          })
 }   
