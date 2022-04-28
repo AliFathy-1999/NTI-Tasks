@@ -8,6 +8,7 @@
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li><a routerLink="home" class="nav-link px-2 link-primary">Home</a></li>
+        <li><a routerLink="blogs" class="nav-link px-2 link-dark">Blog</a></li>
         <li><a routerLink="tags" class="nav-link px-2 link-dark">Tags</a></li>
         <li><a routerLink="users" class="nav-link px-2 link-dark">Users</a></li>
         <!--<li><a routerLink="login" class="nav-link px-2 link-dark">login</a></li>-->
@@ -17,7 +18,7 @@
         <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
       </form>
 
-      <div class="dropdown text-end">
+      <div class="dropdown text-end" *ngIf="this._global.isLoggedIn">
         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="assets/user-svgrepo-com.svg" alt="profile_picture" width="32" height="32" class="rounded-circle">
         </a>
@@ -25,9 +26,15 @@
           <li><a class="dropdown-item" routerLink="addquestion">New Question...</a></li>
           <li><a class="dropdown-item" routerLink="profile">Profile</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" routerLink="logout">Sign out</a></li>
+          <li><a class="dropdown-item" (click)="logoutSubmit()">Log out</a></li>
         </ul>
       </div>
+      <ul class="col-lg-auto mb-3 mb-lg-0 me-lg-3" *ngIf="!this._global.isLoggedIn">
+        <li class="btn btn-primary" routerLink="/login">login</li>
+      </ul>
+      <ul class="col-lg-auto mb-3 mb-lg-0 me-lg-3" *ngIf="!this._global.isLoggedIn">
+        <li class="btn btn-warning" routerLink="/register">Register</li>
+      </ul>
     </div>
   </div>
 </nav>

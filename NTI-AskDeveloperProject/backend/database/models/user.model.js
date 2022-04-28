@@ -63,6 +63,10 @@ const Schema = mongoose.Schema({
         required:true,
         default:"Developer"
     },
+    role:{
+        type:String,
+        default:"user"
+    },
     tokens : [
         {
             token:{
@@ -74,6 +78,11 @@ const Schema = mongoose.Schema({
 },{
     timestamps:true  //createdAt, updatedAt
 })
+Schema.virtual('MyQuestions',{
+    ref:"questions",
+    localField:"_id",
+    foreignField:"userId"
+ })
 Schema.methods.toJSON = function () {
     const user = this;
     const userObject = user.toObject();
@@ -96,6 +105,7 @@ Schema.statics.login = async function (email,password) {
      await user.save();
      return token
  }
+
 Schema.pre("save",async function(){
     const user = this
     if(user.isModified("password")){

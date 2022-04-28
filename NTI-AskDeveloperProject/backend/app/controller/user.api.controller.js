@@ -80,18 +80,7 @@ class User{
                 message:e.message
             })
         }
-    }
-    // static uploadImage =  async(req, res) =>{
-    //          const imageDir = path.join(__dirname,`../../../uploads`)
-    //             //path.join(__dirname, `${req.file.path}`);
-    //          const newPath = `${imageDir}${path.extname(req.file.originalname)}`;
-    //         fileSystem.rename(imageDir,newPath,()=>{})
-    //          req.user.pImage=`${req.file.path}${path.extname(req.file.originalname)}`;
-    //          await req.user.save()
-    //         res.status(200).send({
-    //             req
-    //          })
-    // }   
+    } 
     static uploadImage =  async(req, res, next) =>{
         const imageDir =  req.file.path;
         const newPath = `${imageDir}${path.extname(req.file.originalname)}`;

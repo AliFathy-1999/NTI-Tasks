@@ -13,10 +13,17 @@ export class LoginComponent implements OnInit {
   data = new FormGroup({
     email:new FormControl('' , [Validators.required , Validators.email]),
     password:new FormControl('' , [Validators.required , Validators.maxLength(20) , Validators.minLength(5)])
-
   })
-  constructor(private _global:GlobalService, private toastr:ToastrService,private router: Router) { }
+  token = localStorage.getItem('token')
+  constructor(private _global:GlobalService, private toastr:ToastrService,private router: Router) {
+    this._global.navbar = false
+    this._global.isLoggedIn=false;
+    if(this.token) {
+      this.router.navigateByUrl('/home')
+    }
+   }
   isSubmitted = false;
+
   get LoginData(){
     return this.data.controls;
   }
@@ -34,6 +41,9 @@ export class LoginComponent implements OnInit {
           //const token = req.headers.get('Authorization');
           this.toastr.success("Login Successfully")
           localStorage.setItem('token',res.data.token)
+          this._global.isLoggedIn=true;
+          this._global.navbar = true
+
           this.router.navigate(['/home'])
         }
       } , (err)=>{
@@ -41,4 +51,6 @@ export class LoginComponent implements OnInit {
       })
     }
   }
+
+
 }

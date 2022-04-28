@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BlogsComponent } from './pages/blogs/blogs.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TagsComponent } from './pages/tags/tags.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -9,9 +10,10 @@ import { RegisterComponent } from './user/register/register.component';
 import { UserprofileComponent } from './user/userprofile/userprofile.component';
 
 const routes: Routes = [
-  { path: '', component:LoginComponent },
+  { path: '', redirectTo:"home" , pathMatch: 'full' },
   { path: 'home', component:HomeComponent },
    { path: 'login', component: LoginComponent},
+   { path: 'blogs', component: BlogsComponent},
   { path: 'register', component: RegisterComponent},
     //******* Test route (add user/api/routename)*******
   { path: 'tags', component:TagsComponent },

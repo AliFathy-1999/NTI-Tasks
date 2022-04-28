@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -18,6 +18,7 @@ import { UserprofileComponent } from './user/userprofile/userprofile.component';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { UserInterceptor } from './interceptor/user.interceptor';
+import { BlogsComponent } from './pages/blogs/blogs.component';
 
 
 
@@ -35,6 +36,7 @@ import { UserInterceptor } from './interceptor/user.interceptor';
     UserprofileComponent,
     RegisterComponent,
     LoginComponent,
+    BlogsComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { UserInterceptor } from './interceptor/user.interceptor';
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [
     {

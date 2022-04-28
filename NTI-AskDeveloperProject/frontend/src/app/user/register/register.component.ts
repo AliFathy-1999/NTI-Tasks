@@ -27,7 +27,9 @@ export class RegisterComponent implements OnInit {
   get fname(){
     return this.UserData.get('fname')
   }
-  constructor(private _global: GlobalService,private toastr:ToastrService , private router : Router) { }
+  constructor(private _global: GlobalService,private toastr:ToastrService , private router : Router) {
+    this._global.navbar = false
+   }
 
   ngOnInit(): void {
 
