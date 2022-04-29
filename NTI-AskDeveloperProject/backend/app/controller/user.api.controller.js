@@ -3,9 +3,6 @@ const multer  = require('multer')
 const path = require("path")
 const fileSystem = require("fs")
 class User{
-    static helloworld= (req,res)=>{
-        res.send("Hello from user api routes");
-    }
     static userRegister= async(req,res)=>{
         try{
             const userData = new userModel(req.body);
@@ -40,8 +37,27 @@ class User{
                 })
             }
     }
-    static all = async(req,res)=>{
-        res.send(req.headers.authorization);
+    static getAllUsers= async(req,res)=>{
+        const pageCount = +req.params.limit
+        const pageNum = +req.params.pageNum  // start 0
+        const users = 
+            await userModel.find()
+            .sort({fname:-1})
+            .limit(pageCount)
+            .skip(pageCount*pageNum)
+        try{
+            res.status(200).send({
+                apiStatus:true,
+                data:users,
+                message:"All Users"
+            })
+        }catch(e){
+            res.status(500).send({
+                apiStatus:false,
+                data:e,
+                Message:e.message,
+            })
+        }
     }
     static me = async(req,res)=>{
         res.status(200).send({
@@ -91,7 +107,22 @@ class User{
             user:req.user,
          })
 }   
-        
+    static editmyProfile = async(req,res)=>{
+        try{
+            const userData = await userModel.findByIdAndUpdate(req.params.id,req.body);
+            //await userData.save();
+            res.status(200).send({
+                apiStatus:true,
+                data:userData,
+                message:"User Profile Updated Successfully"
+            })
+        }catch(e){
+            res.status(500).send({
+                apiStatus:false,
+                message:e.message
+            })
+        }
+    }
 }
 
 module.exports=User;

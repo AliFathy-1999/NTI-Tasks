@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlogsComponent } from './pages/blogs/blogs.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TagsComponent } from './pages/tags/tags.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -8,18 +7,29 @@ import { AddquestionComponent } from './user/addquestion/addquestion.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { UserprofileComponent } from './user/userprofile/userprofile.component';
-
+import { CanActivateGuard } from './guards/can-activate.guard';
+import { SingleQuestionComponent } from './Questions/single-question/single-question.component';
+import {CabActivateChildGuard} from './guards/cab-activate-child.guard';
+import { DeActivateGuard } from './guards/de-activate.guard';
+import { EditprofileComponent } from './user/editprofile/editprofile.component';
 const routes: Routes = [
   { path: '', redirectTo:"home" , pathMatch: 'full' },
   { path: 'home', component:HomeComponent },
-   { path: 'login', component: LoginComponent},
-   { path: 'blogs', component: BlogsComponent},
-  { path: 'register', component: RegisterComponent},
-    //******* Test route (add user/api/routename)*******
+   { path: 'login', component: LoginComponent, canActivate: [CanActivateGuard] },
+  //,canDeactivate: [DeActivateGuard]
+
+  { path: 'register', component: RegisterComponent, canActivate: [CanActivateGuard]},
+  { path: 'myprofile', component: UserprofileComponent},
+  { path: 'editprofile', component: EditprofileComponent, },
   { path: 'tags', component:TagsComponent },
-  { path: 'users', component:UsersComponent },
+  { path: 'users', component:UsersComponent , canActivate: [CanActivateGuard] },
   { path: 'addquestion', component:AddquestionComponent },
-  {path : 'profile', component:UserprofileComponent},
+  { path: 'question',
+  canActivateChild:[CabActivateChildGuard],
+  children: [
+    { path: '', component: AddquestionComponent },
+    { path: 'singleQuestion', component: SingleQuestionComponent },
+  ]},
   {path : 'logout', redirectTo: 'home'},
 
 

@@ -3,10 +3,11 @@ const userController = require("../app/controller/user.api.controller");
 const auth = require("../app/middleware/auth");
 const multer  = require('multer')
 const upload = multer({ dest: 'backend/uploads' })
-userRoutes.get("/",userController.helloworld);
+
 userRoutes.post('/register', userController.userRegister)
 userRoutes.post('/login', userController.userLogin)
-userRoutes.post('/all', auth,userController.all)
+userRoutes.get('/allusers/:pageNum/:limit', auth,userController.getAllUsers)
+userRoutes.post('/editprofile/:id', auth,userController.editmyProfile)
 userRoutes.get('/me',auth,userController.me)
 userRoutes.get('/logout',auth,userController.userLogout)
 userRoutes.get('/logoutAll',auth,userController.userLogoutAll)

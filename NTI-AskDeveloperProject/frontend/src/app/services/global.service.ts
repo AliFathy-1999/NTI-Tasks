@@ -6,12 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GlobalService {
-  // public apiUrl = "http://localhost:2000/"
-  // public apiUserUrl = "api/user/"
-  public baseUrl = "http://dashboard.roshetah.com/api/"
-  public imgUrl = "http://dashboard.roshetah.com/storage/app/public/"
   public isLoggedIn = true;
   public navbar =true
+  public userInfo:any = {}
     constructor(private http : HttpClient) { }
 
   getUser(obj:any):Observable<any>{
@@ -23,7 +20,17 @@ export class GlobalService {
    UserLogout():Observable<any>{
      return this.http.get(`http://localhost:2000/api/user/logout`)
    }
-   getAllBlogs(obj:any , pageNum:any):Observable<any>{
-    return this.http.post(`${this.baseUrl}auth/blog/1/${pageNum}/2` , obj)
+   getme():Observable<any>{
+    return this.http.get("http://localhost:2000/api/user/me")
+  }
+  AuthLogin(){
+    this.http.get("http://localhost:2000/api/user/me").subscribe(data=>{
+      this.userInfo = data
+      localStorage.setItem('userInfo',JSON.stringify(data))
+    })
+    return this.userInfo;
+  }
+  editUser(id:string,obj:any):Observable<any>{
+    return this.http.post(`http://localhost:2000/api/user/editprofile/${id}`,obj)
   }
 }

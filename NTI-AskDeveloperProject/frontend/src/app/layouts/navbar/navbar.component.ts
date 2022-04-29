@@ -9,12 +9,32 @@ import { GlobalService } from 'src/app/services/global.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  flag: boolean = false;
+  data: any
   constructor(public _global:GlobalService,public router:Router,public toastr:ToastrService) {
+
   }
 
   ngOnInit(): void {
+    let token = localStorage.getItem('token')
+    this._global.getme().subscribe(res=>{
+      this.data = res
+    })
+    if(token){
+      // this._global.AuthLogin().subscribe(res=>{
+      //   this._global.isLoggedIn = true
+      //   this.data=res
+      //   console.log(res)
+      //   localStorage.setItem('userInfo',JSON.stringify(res))
+      // })
+      this._global.AuthLogin();
+
+    // console.log(JSON.parse(localStorage.getItem('userInfo')))
+    // this.data = JSON.parse()
+
+    }
+
   }
+
   logoutSubmit(){
     this._global.UserLogout().subscribe(res=>{
       console.log(res)
@@ -30,5 +50,7 @@ export class NavbarComponent implements OnInit {
     } , (err)=>{
       this.toastr.error("Error in Logout")
     })
+
   }
+
 }

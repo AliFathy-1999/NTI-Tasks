@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -18,7 +18,9 @@ import { UserprofileComponent } from './user/userprofile/userprofile.component';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { UserInterceptor } from './interceptor/user.interceptor';
-import { BlogsComponent } from './pages/blogs/blogs.component';
+
+import { SingleQuestionComponent } from './Questions/single-question/single-question.component';
+import { EditprofileComponent } from './user/editprofile/editprofile.component';
 
 
 
@@ -36,7 +38,9 @@ import { BlogsComponent } from './pages/blogs/blogs.component';
     UserprofileComponent,
     RegisterComponent,
     LoginComponent,
-    BlogsComponent,
+
+    SingleQuestionComponent,
+     EditprofileComponent,
   ],
   imports: [
     BrowserModule,

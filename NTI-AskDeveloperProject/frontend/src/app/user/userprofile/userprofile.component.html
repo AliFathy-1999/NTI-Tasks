@@ -1,1 +1,58 @@
-<p>userprofile works!</p>
+<div class="container rounded bg-white  mb-5">
+  <div class="row">
+      <div class="col-md-3 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+            <span class="font-weight-bold">{{userData.data.fname}}</span>
+            <span class="text-black-50">{{userData.data.email}}</span>
+          </div>
+      </div>
+      <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-right">My Profile</h4>
+              </div>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td scope="col">Data</td>
+                    <td scope="col">Value</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td scope="col">First Name</td>
+                    <td scope="col">{{userData.data.fname}}</td>
+                  </tr>
+                  <tr>
+                    <td scope="col">Last Name</td>
+                    <td scope="col">{{userData.data.lname}}</td>
+
+                  </tr>
+                  <tr>
+                    <td scope="col">UserName</td>
+                    <td scope="col">{{userData.data.username}}</td>
+                  </tr>
+                  <tr>
+                    <td scope="col">Age</td>
+                    <td scope="col">{{userData.data.age}}</td>
+                  </tr>
+                  <tr>
+                    <td scope="col">Email</td>
+                    <td scope="col">{{userData.data.email}}</td>
+                  </tr>
+                  <tr>
+                    <td scope="col">Job title</td>
+                    <td scope="col">{{userData.data.titlejob}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="mt-4 mb-5 text-center"><button routerLink="/editprofile"type="button">Edit Your Profile</button></div>
+          </div>
+      </div>
+
+  </div>
+
+</div>
+

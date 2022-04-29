@@ -6,6 +6,7 @@ const userRoutes = require("../routes/user.api.routes")
 const questionsRoutes = require("../routes/questions.api.routes")
 app.use(cors());
 app.use(express.json())
+app.use(express.static('../uploads'))
 app.use('/api/user',userRoutes)
 app.use('/api/questions', questionsRoutes)
 

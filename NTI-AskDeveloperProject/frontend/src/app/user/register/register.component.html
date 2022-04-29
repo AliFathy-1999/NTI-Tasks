@@ -17,7 +17,6 @@
             <div *ngIf="RegisterData?.['fname']?.errors?.['maxlength']">
               Max length of First Name is 10 .
             </div>
-
           </div>
         </div>
         <div class="col-4">
@@ -108,7 +107,7 @@
             Title Job is required.
           </div>
           <div *ngIf="RegisterData?.['titlejob']?.errors?.['minlength']">
-            min length of password is 3 .
+            min length of job title is 3 .
           </div>
           <div *ngIf="RegisterData?.['titlejob']?.errors?.['maxlength']">
             min length of Job Title is 20 .
