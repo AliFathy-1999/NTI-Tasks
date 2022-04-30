@@ -12,7 +12,7 @@ import { GlobalService } from 'src/app/services/global.service';
 export class AddquestionComponent implements OnInit {
   userQuestions:any = new FormGroup({
     questionTitle:new FormControl('' , [Validators.required , Validators.minLength(3),Validators.maxLength(30)]),
-    questionbody:new FormControl('' , [Validators.required , Validators.minLength(10),Validators.maxLength(100)]),
+    questionbody:new FormControl('' , [Validators.required , Validators.minLength(10),Validators.maxLength(300)]),
     tags:new FormControl('' , [Validators.required , Validators.minLength(3),Validators.maxLength(20)])
   })
   constructor(private _global:GlobalService,private router:Router,private toastr: ToastrService) {
@@ -31,10 +31,11 @@ export class AddquestionComponent implements OnInit {
         if(res.error){
           this.toastr.error(res.message)
         }else{
-
           this.toastr.success(res.message)
           this.router.navigateByUrl('/home')
         }
+      },(err)=>{
+        this.toastr.error(err.error.message)
       })
     }
   }

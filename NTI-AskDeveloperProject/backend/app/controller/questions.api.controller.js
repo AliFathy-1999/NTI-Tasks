@@ -24,7 +24,7 @@ class Questions{
             });
         }
     }
-   static getMyQuestions = async(req,res)=>{
+   static getAllMyQuestions = async(req,res)=>{
         //myQuestions
         try{
             //await req.user.populate("MyQuestions");
@@ -33,6 +33,23 @@ class Questions{
                 apiStatus:true,   
                 data:myQuestions,
                 message:"Question getted successfully"  
+            })
+        }catch(e){
+            res.status(500).send({
+                apiStatus:false,
+                message:e.message
+            })
+        }
+    }
+    static getAllUsersQuestions = async(req,res)=>{
+        //myQuestions
+        try{
+            //await req.user.populate("MyQuestions");
+            const myQuestions = await questionsModel.find();
+            res.status(200).send({
+                apiStatus:true,   
+                data:myQuestions,
+                message:"All Questions getted successfully"  
             })
         }catch(e){
             res.status(500).send({

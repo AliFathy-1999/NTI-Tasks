@@ -4,5 +4,6 @@ const auth = require("../app/middleware/auth");
 
 //questionsRoutes.get("/",questionsController.helloworld);
 questionsRoutes.post("/addquestion",auth,questionsController.addQuestion);
-questionsRoutes.get("/getmyquestions",auth,questionsController.getMyQuestions);
+questionsRoutes.get("/getAllmyquestions",auth,questionsController.getAllMyQuestions);
+questionsRoutes.get("/getAllUsersQuestions",questionsController.getAllUsersQuestions);
 module.exports=questionsRoutes;

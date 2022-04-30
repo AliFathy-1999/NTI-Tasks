@@ -36,7 +36,10 @@ export class GlobalService {
   addQuestion(obj:any):Observable<any>{
     return this.http.post("http://localhost:2000/api/questions/addquestion",obj)
   }
-  myQuestion():Observable<any>{
-    return this.http.get("http://localhost:2000/api/questions/myquestion")
+  getmyAllQuestions():Observable<any>{
+    return this.http.get("http://localhost:2000/api/questions/getAllmyquestions")
+  }
+  getAllUsersQuestions():Observable<any>{
+    return this.http.get("http://localhost:2000/api/questions/getAllUsersQuestions")
   }
 }

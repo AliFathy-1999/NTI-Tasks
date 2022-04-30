@@ -15,7 +15,6 @@ export class UserprofileComponent implements OnInit {
   ngOnInit(): void {
     this._global.getme().subscribe(res=>{
       this.userData = res
-      //console.log(`${_global.imgUrl}${this.userData.pImage}`)
     })
   }
 

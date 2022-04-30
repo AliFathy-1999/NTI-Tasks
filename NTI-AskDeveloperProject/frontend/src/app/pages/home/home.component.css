@@ -1,4 +1,4 @@
-button{
+#button1{
   background-color: #DFEFF4;
   color: #283149;
   padding: 14px 20px;
@@ -8,8 +8,27 @@ button{
   cursor: pointer;
   width: 15%;
 }
+.button1{
+  background-color: #DFEFF4;
+  color: #283149;
+  padding: 14px 20px;
+  border-radius: 0.2em;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+.butnvote{
+  background-color: transparent;
+  border: 0;
+}
 .fpart{
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+}
+#qbody{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 0.3em;
 }

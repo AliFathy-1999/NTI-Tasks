@@ -26,8 +26,22 @@ const questionSchema= mongoose.Schema({
             required: true
         }
     ],
-    //votes: [votingSchema],
-    //answers:[answerSchema],
+    votes : [
+        {
+            vote:{
+                type:String,
+                default:"",
+            }
+        }
+    ],
+    answers : [
+        {
+            answer:{
+                type:String,
+                default:"",
+            }
+        }
+    ]
 }, {
     timestamps:true  //createdAt, updatedAt
 }

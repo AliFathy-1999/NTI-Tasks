@@ -1,5 +1,35 @@
 <div class="fpart">
   <h3 class="text-primary mt-3 mb-3">All Questions</h3>
-  <button routerLink="/addquestion" class="text-primary">Add Question</button>
+  <button routerLink="/addquestion" class="text-primary" id="button1">Add Question</button>
 </div>
 
+
+<div class="container gap-3 py-3">
+  <div class="row bg-light p-3">
+    <div class="col-1">
+      <img class="d-flex rounded-circle w-75" src="https://secure.gravatar.com/avatar/$%7Bthis._id%7D?s=90&d=identicon" alt="Profile Picture">
+
+      <div class="d-grid">
+          <button class="butnvote  mt-3"><img src="../../../assets/arrow-up-s-svgrepo-com.svg"></button>
+          <p id="counter" class="text-center mt-3">0</p>
+          <button class="butnvote"><img src="../../../assets/arrow-down-2-svgrepo-com.svg"></button>
+    </div>
+    </div>
+    <div class="col-9 ">
+      <h5 class="card-title">Name</h5>
+      <p class="card-subtitle text-dark m-lg-2"> from 3m</p>
+      <h4 class="mt-2 text-primary">Title</h4>
+      <div class="bg-secondary" id="qbody">
+        <p class="mt-2 text-white p-4" >Body</p>
+      </div>
+      <div>
+        Tags : <p></p>
+      </div>
+      <div>
+        <button class="btn btn-warning text-dark m-1">Edit Question</button>
+        <button class="btn btn-danger text-white m-1">Delete Question</button>
+        <button class="btn btn-primary text-white m-1">Add Your Asnwer</button>
+      </div>
+
+  </div>
+</div>
