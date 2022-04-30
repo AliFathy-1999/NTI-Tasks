@@ -1,14 +1,13 @@
 <div class="fpart">
   <h3 class="text-primary mt-3 mb-3">All Questions</h3>
-  <button routerLink="/addquestion" class="text-primary" id="button1">Add Question</button>
+  <button routerLink="/addquestion" class="text-primary" id="button1"(click)="handlsSubmit()" *ngIf="isSubmitted">Add Question</button>
 </div>
 
 
-<div class="container gap-3 py-3">
+<div class="container gap-3 py-3" *ngFor="let question of AllQuestions">
   <div class="row bg-light p-3">
     <div class="col-1">
       <img class="d-flex rounded-circle w-75" src="https://secure.gravatar.com/avatar/$%7Bthis._id%7D?s=90&d=identicon" alt="Profile Picture">
-
       <div class="d-grid">
           <button class="butnvote  mt-3"><img src="../../../assets/arrow-up-s-svgrepo-com.svg"></button>
           <p id="counter" class="text-center mt-3">0</p>
@@ -16,20 +15,46 @@
     </div>
     </div>
     <div class="col-9 ">
-      <h5 class="card-title">Name</h5>
-      <p class="card-subtitle text-dark m-lg-2"> from 3m</p>
-      <h4 class="mt-2 text-primary">Title</h4>
+      <div class="card-title" *ngFor="let user of AllUsers">
+        <h5 *ngIf="user._id === question.UserId">{{user.fname}} {{user.lname}}</h5>
+      </div>
+      <p class="card-subtitle text-dark m-lg-2"> {{question.createdAt | date:'MMM d, y, h:mm:ss a'}}</p>
+      <h4 class="mt-2 text-primary">{{question.questionTitle}}</h4>
       <div class="bg-secondary" id="qbody">
-        <p class="mt-2 text-white p-4" >Body</p>
+        <p class="mt-2 text-white p-4" >{{question.questionbody}}</p>
       </div>
       <div>
-        Tags : <p></p>
+         <p>Tags : <span class="text-primary">{{question.tags}}</span></p>
       </div>
-      <div>
+      <div class="mb-5">
         <button class="btn btn-warning text-dark m-1">Edit Question</button>
         <button class="btn btn-danger text-white m-1">Delete Question</button>
-        <button class="btn btn-primary text-white m-1">Add Your Asnwer</button>
+        <button class="btn btn-primary text-white m-1" (click)="handleAnswer()">Add Your Asnwer</button>
       </div>
+      <div *ngIf="isAnswer">
+        <div class="card-title">
+          <h5>Add Your Answer</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="UserAnswer" (ngSubmit)="handleAnswerSubmit()">
+            <div class="form-group">
+              <label for="answer">Answer</label>
+              <textarea class="form-control" id="answer" formControlName="answers" name="answers" rows="4"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary mt-2" value="Submit">
+          </form>
+        </div>
+    </div>
 
+    <div>
+      <div class="card-title">
+        <h5 class="text-primary">Answers</h5>
+      </div>
+      <div class="card-body">
+        <div class="card-title">
+          <h5>{{question.answers.answer}}</h5>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const votingSchema = require('../../database/models/voting.model');
-const answerSchema = require('../../database/models/answers.model');
 
 const questionSchema= mongoose.Schema({
     UserId:{

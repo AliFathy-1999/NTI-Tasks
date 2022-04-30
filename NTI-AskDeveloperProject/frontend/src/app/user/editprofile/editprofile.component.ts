@@ -58,6 +58,8 @@ export class EditprofileComponent implements OnInit {
           this.router.navigate(['myprofile'])
           //this.router.navigateByUrl("/login")
       }
+    },(err)=>{
+      this.toastr.error(err.error.message)
     })
     }
 

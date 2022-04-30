@@ -11,8 +11,8 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class AddquestionComponent implements OnInit {
   userQuestions:any = new FormGroup({
-    questionTitle:new FormControl('' , [Validators.required , Validators.minLength(3),Validators.maxLength(30)]),
-    questionbody:new FormControl('' , [Validators.required , Validators.minLength(10),Validators.maxLength(300)]),
+    questionTitle:new FormControl('' , [Validators.required , Validators.minLength(3),Validators.maxLength(100)]),
+    questionbody:new FormControl('' , [Validators.required , Validators.minLength(10),Validators.maxLength(500)]),
     tags:new FormControl('' , [Validators.required , Validators.minLength(3),Validators.maxLength(20)])
   })
   constructor(private _global:GlobalService,private router:Router,private toastr: ToastrService) {

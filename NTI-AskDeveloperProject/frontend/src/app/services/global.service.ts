@@ -12,7 +12,7 @@ export class GlobalService {
     constructor(private http : HttpClient) { }
 
   getUser(obj:any):Observable<any>{
-    return this.http.post("http://localhost:2000/api/user/register",obj)
+    return this.http.post("http://localost:2000/api/user/register",obj)
   }
   Userlogin(obj:any):Observable<any>{
     return this.http.post(`http://localhost:2000/api/user/login` , obj)
@@ -33,6 +33,9 @@ export class GlobalService {
   editUser(id:string,obj:any):Observable<any>{
     return this.http.post(`http://localhost:2000/api/user/editprofile/${id}`,obj)
   }
+  getAllUsers():Observable<any>{
+    return this.http.get("http://localhost:2000/api/user/allusers")
+  }
   addQuestion(obj:any):Observable<any>{
     return this.http.post("http://localhost:2000/api/questions/addquestion",obj)
   }
@@ -41,5 +44,8 @@ export class GlobalService {
   }
   getAllUsersQuestions():Observable<any>{
     return this.http.get("http://localhost:2000/api/questions/getAllUsersQuestions")
+  }
+  addAnswer(obj:any,id:any):Observable<any>{
+    return this.http.post(`http://localhost:2000/api/questions/AddAnswer/${id}`,obj)
   }
 }

@@ -38,13 +38,14 @@ class User{
             }
     }
     static getAllUsers= async(req,res)=>{
-        const pageCount = +req.params.limit
+        /*const pageCount = +req.params.limit
         const pageNum = +req.params.pageNum  // start 0
         const users = 
             await userModel.find()
             .sort({fname:-1})
             .limit(pageCount)
-            .skip(pageCount*pageNum)
+            .skip(pageCount*pageNum)*/
+            const users = await userModel.find();
         try{
             res.status(200).send({
                 apiStatus:true,

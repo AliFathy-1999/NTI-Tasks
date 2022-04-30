@@ -1,6 +1,6 @@
 const questionsModel = require('../../database/models/questions.model');
 const userModel = require('../../database/models/user.model');
-//Add Question ,  Edit Question ,  Delete Question, Get All Questions,  Get Single Question
+
 class Questions{
     static helloworld= (req,res)=>{
         res.send("Hello from questions api routes");
@@ -56,6 +56,23 @@ class Questions{
                 apiStatus:false,
                 message:e.message
             })
+        }
+    }
+    static addAnswer = async(req,res)=>{
+        try{
+            const question = await questionsModel.findByIdAndUpdate(req.params.id,req.body);
+            question.answers.push(req.body);
+            await question.save();
+            res.status(200).send({
+                apiStatus:true,   
+                data:question,
+                message:"Answer added successfully"               
+            })
+        }catch(e){
+            res.status(500).send({
+                apiStatus:false,    
+                message:e.message
+            });
         }
     }
 }
