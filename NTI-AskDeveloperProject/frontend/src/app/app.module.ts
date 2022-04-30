@@ -19,8 +19,8 @@ import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { UserInterceptor } from './interceptor/user.interceptor';
 
-import { SingleQuestionComponent } from './Questions/single-question/single-question.component';
 import { EditprofileComponent } from './user/editprofile/editprofile.component';
+import { MyquestionsComponent } from './user/myquestions/myquestions.component';
 
 
 
@@ -38,9 +38,8 @@ import { EditprofileComponent } from './user/editprofile/editprofile.component';
     UserprofileComponent,
     RegisterComponent,
     LoginComponent,
-
-    SingleQuestionComponent,
      EditprofileComponent,
+     MyquestionsComponent,
   ],
   imports: [
     BrowserModule,

@@ -27,10 +27,11 @@ class Questions{
    static getMyQuestions = async(req,res)=>{
         //myQuestions
         try{
-            await req.user.populate("MyQuestions");
+            //await req.user.populate("MyQuestions");
+            const myQuestions = await questionsModel.find({UserId:req.user._id});
             res.status(200).send({
                 apiStatus:true,   
-                data:req.user.MyQuestions,
+                data:myQuestions,
                 message:"Question getted successfully"  
             })
         }catch(e){

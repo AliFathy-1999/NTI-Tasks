@@ -110,7 +110,7 @@ class User{
     static editmyProfile = async(req,res)=>{
         try{
             const userData = await userModel.findByIdAndUpdate(req.params.id,req.body);
-            //await userData.save();
+            await userData.save();
             res.status(200).send({
                 apiStatus:true,
                 data:userData,

@@ -33,4 +33,10 @@ export class GlobalService {
   editUser(id:string,obj:any):Observable<any>{
     return this.http.post(`http://localhost:2000/api/user/editprofile/${id}`,obj)
   }
+  addQuestion(obj:any):Observable<any>{
+    return this.http.post("http://localhost:2000/api/questions/addquestion",obj)
+  }
+  myQuestion():Observable<any>{
+    return this.http.get("http://localhost:2000/api/questions/myquestion")
+  }
 }

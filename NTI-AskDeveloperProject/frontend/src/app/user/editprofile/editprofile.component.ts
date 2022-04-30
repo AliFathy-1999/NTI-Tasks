@@ -16,7 +16,6 @@ export class EditprofileComponent implements OnInit {
     age:new FormControl('' , [Validators.required , Validators.min(12),Validators.max(80)]),
     username:new FormControl('' , [Validators.required , Validators.minLength(3),Validators.maxLength(15)]),
     email:new FormControl('' , [Validators.required , Validators.email]),
-    password:new FormControl('' , [Validators.required , Validators.maxLength(20) , Validators.minLength(5)]),
     phone:new FormControl('' , [Validators.required , Validators.minLength(11)]),
     titlejob:new FormControl('' , [Validators.required , Validators.minLength(3),Validators.maxLength(20)])
   })
@@ -65,5 +64,3 @@ export class EditprofileComponent implements OnInit {
   }
 
   }
-
-

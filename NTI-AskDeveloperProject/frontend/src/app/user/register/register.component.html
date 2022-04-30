@@ -75,6 +75,9 @@
       </div>
 
       <div class="form-group mb-4">
+        <div class=" alert-warning">
+          Note, Not Allowed to enter password contain your first name or last Number.
+        </div>
         <input type="password" class="form-control"  placeholder="Password" formControlName="password" name="password">
         <div class="text-danger" *ngIf="isSubmitted && RegisterData?.['password']?.invalid">
           <div *ngIf="RegisterData?.['password']?.errors?.['required']">
@@ -89,6 +92,9 @@
       </div>
       </div>
       <div class="form-group mb-4">
+        <div class=" alert-warning">
+          Note, Allowed Only Egyptian Phone numbers.
+        </div>
         <input type="text" class="form-control"  placeholder="Phone Number" formControlName="phone" name="phone">
         <div class="text-danger" *ngIf="isSubmitted && RegisterData?.['phone']?.invalid">
           <div *ngIf="RegisterData?.['phone']?.errors?.['required']">

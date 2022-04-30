@@ -1,1 +1,49 @@
-<p>addquestion works!</p>
+<h3 class="text-primary mt-2 ">Ask a public question</h3>
+<form [formGroup]="userQuestions" (ngSubmit)="handleSubmit()" class="mt-4 col-8 card p-3 m-lg-5 mb-5" >
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label text-primary fs-5">Title</label>
+  <input type="email" class="form-control" formControlName="questionTitle" name="questionTitle" id="exampleFormControlInput1"  placeholder="e.g. Is there an R function for finding the index of an element in a vector">
+  <div class="text-danger" *ngIf="isSubmitted && addquestions?.['questionTitle']?.invalid">
+    <div *ngIf="addquestions?.['questionTitle']?.errors?.['required']">
+      Question Title is required.
+    </div>
+    <div *ngIf="addquestions?.['questionTitle']?.errors?.['minlength']">
+      Min length of Question Title is 3 .
+    </div>
+    <div *ngIf="addquestions?.['questionTitle']?.errors?.['maxlength']">
+      Max length of Question Title  is 30 .
+    </div>
+  </div>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label text-primary fs-5">Body</label>
+  <textarea class="form-control" formControlName="questionbody" name="questionbody" id="exampleFormControlTextarea1" rows="5"></textarea>
+  <div class="text-danger" *ngIf="isSubmitted && addquestions?.['questionbody']?.invalid">
+    <div *ngIf="addquestions?.['questionbody']?.errors?.['required']">
+      Question Body is required.
+    </div>
+    <div *ngIf="addquestions?.['questionbody']?.errors?.['minlength']">
+      Min length of Question Body is 10 .
+    </div>
+    <div *ngIf="addquestions?.['questionbody']?.errors?.['maxlength']">
+      Max length of Question Body is 100 .
+    </div>
+  </div>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput2" class="form-label text-primary fs-5">Tags</label>
+  <input class="form-control" formControlName="tags" name="tags"id="exampleFormControlInput2" placeholder="e.g. JavaScript"/>
+  <div class="text-danger" *ngIf="isSubmitted && addquestions?.['tags']?.invalid">
+    <div *ngIf="addquestions?.['tags']?.errors?.['required']">
+      Tags is required.
+    </div>
+    <div *ngIf="addquestions?.['tags']?.errors?.['minlength']">
+      Min length of Tags is 3 .
+    </div>
+    <div *ngIf="addquestions?.['tags']?.errors?.['maxlength']">
+      Max length of Tags is 20 .
+    </div>
+  </div>
+</div>
+  <input type="submit" class="form-control" id="exampleFormControlInput3" />
+</form>

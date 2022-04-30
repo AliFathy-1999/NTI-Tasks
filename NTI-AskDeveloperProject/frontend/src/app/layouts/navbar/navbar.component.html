@@ -21,10 +21,10 @@
       </ul>
       <div class="dropdown text-end" *ngIf="this._global.isLoggedIn">
         <a class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="../../../assets/user-svgrepo-com.svg" alt="profile_picture" width="32" height="32" class="rounded-circle">
+          <img src="https://secure.gravatar.com/avatar/$%7Bthis._id%7D?s=90&d=identicon" alt="profile_picture" width="32" height="32" class="rounded-circle">
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-          <li><a class="dropdown-item" routerLink="addquestion">New Question...</a></li>
+          <li><a class="dropdown-item" routerLink="myquestion">My Questions</a></li>
           <li><a class="dropdown-item" routerLink="myprofile">Profile</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" (click)="logoutSubmit()">Log out</a></li>

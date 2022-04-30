@@ -8,10 +8,10 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { UserprofileComponent } from './user/userprofile/userprofile.component';
 import { CanActivateGuard } from './guards/can-activate.guard';
-import { SingleQuestionComponent } from './Questions/single-question/single-question.component';
 import {CabActivateChildGuard} from './guards/cab-activate-child.guard';
 import { DeActivateGuard } from './guards/de-activate.guard';
 import { EditprofileComponent } from './user/editprofile/editprofile.component';
+import { MyquestionsComponent } from './user/myquestions/myquestions.component';
 const routes: Routes = [
   { path: '', redirectTo:"home" , pathMatch: 'full' },
   { path: 'home', component:HomeComponent },
@@ -24,11 +24,11 @@ const routes: Routes = [
   { path: 'tags', component:TagsComponent },
   { path: 'users', component:UsersComponent , canActivate: [CanActivateGuard] },
   { path: 'addquestion', component:AddquestionComponent },
+  { path: 'myquestion', component:MyquestionsComponent },
   { path: 'question',
   canActivateChild:[CabActivateChildGuard],
   children: [
     { path: '', component: AddquestionComponent },
-    { path: 'singleQuestion', component: SingleQuestionComponent },
   ]},
   {path : 'logout', redirectTo: 'home'},
 

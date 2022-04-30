@@ -1,0 +1,13 @@
+form{
+  box-shadow: 3px 4px;
+}
+input[type=submit] {
+  background-color: #DFEFF4;
+  color: #283149;
+  padding: 14px 20px;
+  border-radius: 0.2em;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+  color:#283149;
+}

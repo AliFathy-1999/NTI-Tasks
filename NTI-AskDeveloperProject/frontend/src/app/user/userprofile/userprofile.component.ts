@@ -9,14 +9,14 @@ import { GlobalService } from 'src/app/services/global.service';
 export class UserprofileComponent implements OnInit {
   userData:any={}
   constructor(private _global:GlobalService) {
-    this._global.getme().subscribe(res=>{
-      this.userData = res
-      console.log(this.userData)
-      //console.log(`${_global.imgUrl}${this.userData.pImage}`)
-    })
+
    }
 
   ngOnInit(): void {
+    this._global.getme().subscribe(res=>{
+      this.userData = res
+      //console.log(`${_global.imgUrl}${this.userData.pImage}`)
+    })
   }
 
 

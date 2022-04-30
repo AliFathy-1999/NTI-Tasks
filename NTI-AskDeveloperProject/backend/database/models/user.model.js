@@ -98,11 +98,6 @@ Schema.statics.login = async function (email,password) {
     if(!isMatch) throw new Error("invalid Password")
     return userData;
 }
-/*Schema.statics.editpass = async function (password) {
-    const isMatch = await bcryptjs.compare(password,userData.password);
-    if(!isMatch) throw new Error("invalid Password")
-    return userData;
-}*/
  Schema.methods.generateToken = async function () {
      const user = this;
      const token= jwt.sign({_id:user._id},process.env.JWTKEY)
